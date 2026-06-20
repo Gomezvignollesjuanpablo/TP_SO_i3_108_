@@ -1,0 +1,41 @@
+Gamma: Mauro Avalo.
+
+d- Sí, quedan completamente actualizadas al final del proceso. Las ramas secundarias (AVALO_GAMMA y AVALO_GAMMA_2) quedaron actualizadas en el repositorio remoto (GitHub) porque tanto GAMMA como ALFA descargaron, editaron de forma incremental y subieron sus cambios sobre ellas mediante git push.
+
+Sin embargo, la rama que contiene la actualización absoluta y unificada de todo el proyecto es la rama principal main (o master), ya que allí se realizaron los git merge finales de ambas interacciones.
+
+e- El principal problema técnico que tuvimos fue el Conflicto de Merge (Merge Conflict) en los archivos compartidos (datos.txt y beta.txt). Este conflicto ocurre porque Git es una herramienta que rastrea cambios línea por línea. Cuando GAMMA subió el archivo a GitHub, y luego ALFA (o GAMMA al querer corregirlo) modificaron las mismas líneas del mismo archivo localmente, Git no sabe automáticamente con cuál versión quedarse ni cómo combinarlas sin pisar el trabajo del otro. Al intentar hacer el git pull o git merge, Git detuvo el proceso automáticamente, marcó los archivos con etiquetas de conflicto (<<<<<<< HEAD, =======, >>>>>>>) y nos obligó a abrir los archivos con un editor de texto (nano) para borrar manualmente las marcas y ordenar el texto de forma que quedara la información de ambos integrantes.
+
+f- Nota de contexto para el profe: Como BETA se dio de baja, pero experimente problemas con los comandos de red (ifconfig e ip a no encontrados), teniendo que corregir el archivo posteriormente para simular o estructurar la salida.
+
+git checkout -b AVALO_GAMMA_2
+
+echo "GAMMA: [Nombre] [Apellido] - Hora: $(date)" > beta.txt
+
+ipconfig >> beta.txt
+
+git add .
+
+git commit -m "GAMMA: Crea beta.txt con info de red"
+
+git push origin AVALO_GAMMA_2
+
+
+
+Alfa: Juan Pablo Gomez Vignolles.
+
+g- Alfa debió ejecutar los siguientes comandos para el punto 8:
+
+git checkout AVALO_GAMMA_2
+
+echo "GAMMA: [Nombre y Apellido]" >> beta.txt
+
+ipconfig >> beta.txt
+
+echo "Hora: [HH:MM]" >> beta.txt
+
+git add beta.txt
+
+git commit -m "GAMMA: Agrega datos iniciales en beta.txt"
+
+git push origin AVALO_GAMMA_2
